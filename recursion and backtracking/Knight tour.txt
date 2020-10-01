@@ -1,8 +1,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool canPlace(vector<vector<int>>, int n, int r, int c){
-    return 0;      
+bool canPlace(vector<vector<int>> &board, int n, int r, int c){
+    return 
+        r >= 0 && r < n &&
+        c >= 0 && c < n &&
+        board[r][c] == 0;
 }
 
 bool solveKnightMove(vector<vector<int>> &board, int n, int move_no, int curRow, int curCol){
@@ -11,7 +14,7 @@ bool solveKnightMove(vector<vector<int>> &board, int n, int move_no, int curRow,
     }
 
     int rowDir[] = {+2, +1, -1, -2, -2, -1, +1, +2};
-    int colDir[] = {+5, +2, +2, +1, -1, -2, -6, -1};
+    int colDir[] = {+1, +2, +2, +1, -1, -2, -2, -1};
     for(int curDir = 0; curDir < 8; ++curDir){
         int nextRow = curRow + rowDir[curDir];
         int nextCol = curCol + colDir[curDir];
