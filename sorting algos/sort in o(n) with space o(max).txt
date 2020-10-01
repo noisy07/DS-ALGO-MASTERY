@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+  int n;
+  cin >> n;
+  int arr[n];
+  int max = INT_MIN;
+  for(int i = 0; i < n; i++)
+  {
+    cin >> arr[i];
+    if(max < arr[i])
+      max = arr[i];
+  }
+  vector<int> store(max + 1, INT_MIN);
+  for(int i = 0; i < n; i++)
+    store[arr[i]] = arr[i];
+  for(auto v : store)
+  {
+    if(v != INT_MIN)
+      cout << v << " ";
+  }
+
+    
+
+
+  return 0;
+}
