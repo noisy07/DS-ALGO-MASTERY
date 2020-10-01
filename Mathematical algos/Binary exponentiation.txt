@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+
+//O(log(n))
+int exp(int a, int n)
+{
+    int res = 1;
+    while(n)
+    {
+        if(n % 2)
+        {
+            n -= 1;
+            res *= a;
+        }
+        else
+        {
+            n /= 2;
+            a *= a; 
+        }
+    }
+    return res;
+}
+
+int main()
+{
+   cout << exp(2, 5);
+    return 0;
+}

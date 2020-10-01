@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+//aabbbc here ans is 3 as b occur max i.e 3
+
+int main()
+{
+  string str;
+  cin >> str;
+  int m = 1, count = 0;
+  char check = 'A';
+  for(char ch : str)
+  {
+    if(check == ch)
+    {
+      count += 1;
+      m = max(m, count);
+    }
+    else
+    {
+      check = ch;
+      count = 1;
+    }
+  }
+  cout << m;
+  return 0;
+}

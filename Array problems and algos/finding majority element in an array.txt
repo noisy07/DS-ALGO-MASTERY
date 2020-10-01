@@ -1,0 +1,18 @@
+[1, 1, 2, 3, 1] here 1 occurs more than half i.e n / 2 times in an array so majority is 1
+#NOTE for optimal approach i.e moore algorithm it is to be noted that majority always exist.
+
+int majorityElement(vector<int>& nums) {
+        int count = 0, cand = 0;
+        for(auto v : nums)
+        {
+            if(count == 0)
+                cand = v;
+            if(v == cand)
+                count += 1;
+            else
+                count -= 1;
+        }
+        return cand;
+    }
+
+ 

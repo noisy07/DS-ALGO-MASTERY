@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+// series 0 1 1 2 3 .....
+// 0 1 1
+// f s n 2
+//   f s n
+
+// o(n) strategy
+int fib1(int n)
+{
+    int first = 0, second = 1, next;
+    for(int i = 1; i <= n; i++)
+    {
+        next = first + second;
+        first = second;
+        second = next;
+    }
+    return first;
+}
+
+//recursion with overlapping problem optimised using vector of size(n + 1) & initialize with -1
+int fib2(int n, vector<int> &store)
+{
+    if(n == 0)
+        return 0;
+    else if(n <= 2)
+        return 1;
+
+    if(store[n] == -1)
+        return store[n] = fib2(n - 1, store) + fib2(n - 2, store); 
+    else
+        return store[n];
+}
+
+//memoised version
+int fib3(int n)
+{
+    int arr[n + 1];
+    arr[0] = 0;
+    arr[1] = 1;
+    for(int i = 2; i <= n; i++)
+        arr[i] = arr[i - 1] + arr[i - 2];
+    return arr[n];
+}
+
+//for checking
+int main()
+{
+    //vector for recursion optimisation fib2
+    vector<int> store(10, -1);
+    
+    cout << fib3(9);
+    return 0;
+}

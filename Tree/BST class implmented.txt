@@ -1,0 +1,110 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class treeNode
+{
+  public : 
+    treeNode *left;
+    treeNode *right;
+    int data;
+    treeNode(int d): data(d), left(NULL), right(NULL) {} 
+};
+
+class BST
+{
+  public :
+    treeNode *root;
+    BST(): root(NULL) {}
+  void insertNode(int val)
+  {
+    treeNode *temp = new treeNode(val);
+    if(this -> root == NULL)
+      this -> root = temp;
+    else
+    {
+      treeNode *curr = this -> root, *prev = this -> root;
+      while(curr != NULL)
+      {
+        prev = curr;
+        if(curr -> data < val)
+          curr = curr -> right;
+        else
+          curr = curr -> left; 
+      }
+      if(prev -> data < val)
+        prev -> right = temp;
+      else
+        prev -> left = temp;
+    }
+  }
+  void preOrder(treeNode *root)
+  {
+    if(root == NULL)
+      return;
+    cout << root -> data << " ";
+    preOrder(root -> left);
+    preOrder(root -> right);
+  }
+};
+
+
+int main()
+{
+  BST tree;
+  tree.insertNode(2);
+  tree.insertNode(3);
+  tree.insertNode(5);
+  tree.insertNode(1);
+  tree.preOrder(tree.root);
+  return 0;
+}
+
+//BST with recursive insertion
+#include<bits/stdc++.h>
+using namespace std;
+
+class treeNode
+{
+  public : 
+    treeNode *left;
+    treeNode *right;
+    int data;
+    treeNode(int d): data(d), left(NULL), right(NULL) {} 
+};
+
+class BST
+{
+  public :
+    treeNode *root;
+    BST(): root(NULL) {}
+  treeNode *insertion(int val, treeNode *root)
+  {
+    if(root == NULL)
+      return new treeNode(val);
+    if(root -> data < val)
+      root -> right = insertion(val, root -> right);
+    else
+      root -> left = insertion(val, root -> left);
+    return root;
+  }
+  void preOrder(treeNode *root)
+  {
+    if(root == NULL)
+      return;
+    cout << root -> data << " ";
+    preOrder(root -> left);
+    preOrder(root -> right);
+  }
+};
+
+
+int main()
+{
+  BST tree;
+  tree.root = tree.insertion(2, tree.root);
+  tree.root = tree.insertion(3, tree.root);
+  tree.root = tree.insertion(5, tree.root);
+  tree.root = tree.insertion(1, tree.root);
+  tree.preOrder(tree.root);
+  return 0;
+}
