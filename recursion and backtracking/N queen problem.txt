@@ -1,6 +1,17 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
+void printSolution(vector<vector<int> > &board, int n)
+{
+	for(int i = 0; i < n; i++)
+	{
+		for(int j = 0; j < n; j++)
+			cout << board[i][j] << " ";
+		cout << endl;
+	}
+}
+
 bool isSafe(vector<vector<int> > &board, int row, int col, int n)
 {
 	//row check
