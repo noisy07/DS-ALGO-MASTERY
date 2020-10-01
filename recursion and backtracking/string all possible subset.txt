@@ -1,18 +1,19 @@
 #include<bits/stdc++.h>
 using namespace std;
-//infinite loop problem
-void display(string str, string curr, int index = 0)
+
+void display(string str, string curr, int index)
 {
-    if(index == str.size() - 1)
+    if(index == str.size())
     {
         cout << curr << " ";
-        return 0;
+        return;
     }
-
-    display(str, curr + str[index], index + 1);
+    
     display(str, curr, index + 1);
+    display(str, curr + str[index], index + 1);
+    
 }
- 
+//driver 
 int main()
 {
     display("ABC", "", 0);
