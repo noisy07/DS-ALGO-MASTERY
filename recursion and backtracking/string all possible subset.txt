@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+using namespace std;
+//infinite loop problem
+void display(string str, string curr, int index = 0)
+{
+    if(index == str.size() - 1)
+    {
+        cout << curr << " ";
+        return 0;
+    }
+
+    display(str, curr + str[index], index + 1);
+    display(str, curr, index + 1);
+}
+ 
+int main()
+{
+    display("ABC", "", 0);
+    return 0;
+}

@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+//problem occured plz do resolve
+int main()
+{
+    int arr[] = {1, 2, 3};
+    vector<int> temp;
+    int total;
+    // [1, 2, 3]
+    for(int i = 0; i < 3; i++)
+    {
+        for(int j = i; j < 3; j++)
+        {
+             temp.push_back(arr[j]);
+             
+        }
+        temp.clear();   
+    }
+    for(int i = 0; i < store.size(); i++)
+    {
+        for(int j = 0; j < store[i].size(); j++)
+            cout << store[i][j] << " ";
+        cout << endl;
+    }
+    return 0;
+}
+
+
+
+

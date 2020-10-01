@@ -1,0 +1,63 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+bool isSafe(vector<vector<int> > &board, int row, int col, int n)
+{
+	//row check
+	for(int i = 0; i < row; i++)
+		if(board[i][col])
+			return false;
+	//left diagonal
+	for(int i = row, j = col; i >= 0 && j >= 0; i--, j--)
+		if(board[i][j])
+			return false;
+	//for right diagonal
+	for(int i = row, j = col; i >= 0 && j < n; i--, j++)
+		if(board[i][j])
+			return false;
+	return true;
+}
+
+bool solveNqueen(vector<vector<int> > &board, int row, int n)
+{
+	if(row == n)
+	{
+		printSolution(board, n);
+		cout << "------" << endl;
+		return true;
+	}
+	for(int j = 0; j < n; j++)
+	{
+		if(isSafe(board, row, j, n))
+		{
+			board[row][j] = 1;
+		    bool nextQueen = solveNqueen(board, row + 1, n);
+			if(nextQueen)
+				return true;
+			board[row][j] = 0;
+		}
+		
+	}
+	return false;
+}
+
+
+int main()
+{
+	int n;
+	cin >> n;
+	vector<vector<int> > board(n , vector<int>(n, 0));
+	if(solveNqueen(board, 0, n))
+		cout << "Possible";
+	else
+		cout << "Not Possible";
+	
+	
+	
+	// 1 0 0 0
+	// 0 0 0 0
+	// 0 0 0 0
+	// 0 0 0 0
+
+	return 0;
+}
