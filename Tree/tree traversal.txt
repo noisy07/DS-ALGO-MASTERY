@@ -1,0 +1,110 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class treeNode
+{
+  public :
+    treeNode *left;
+    treeNode *right;
+    int data;
+  treeNode(int data)
+  {
+    this -> left = NULL;
+    this -> right = NULL;
+    this -> data = data;
+  }
+};
+class binaryTree
+{
+  public : treeNode *root;
+  binaryTree() : root(NULL) {}
+  void insertNode(int data)
+  {
+    treeNode *temp = new treeNode(data);
+    if(this -> root == NULL)
+      this -> root = temp;
+    else
+    {
+      treeNode *t = root, *parent = root;
+      while(t != NULL)
+      {
+        if(t -> data > temp -> data)
+        {
+          parent = t;
+          t = t -> left;
+        }
+        else
+        {
+          parent = t;
+          t = t -> right;
+        }  
+      }
+    if(parent -> data > temp -> data)
+      parent -> left = temp;
+    else
+      parent -> right = temp;
+    }
+  }
+
+  void traversal(treeNode *root)
+  {
+    if(root == NULL)
+      return ; 
+    cout << root -> data << " ";
+    traversal(root -> left);
+    traversal(root -> right);
+  }
+  void intraversal(treeNode *root)
+  {
+    if(root == NULL)
+      return ; 
+    intraversal(root -> left);
+    cout << root -> data << " ";
+    intraversal(root -> right);
+  }
+  void storeBSTNodes(treeNode* root, vector<treeNode*> &nodes) 
+{ 
+   
+    if (root==NULL) 
+        return; 
+  
+    storeBSTNodes(root->left, nodes); 
+    nodes.push_back(root); 
+    storeBSTNodes(root->right, nodes); 
+} 
+  
+treeNode* buildTreeUtil(vector<treeNode*> &nodes, int start, int end)
+{ 
+    if (start > end) 
+        return NULL; 
+  
+    int mid = (start + end)/2; 
+    treeNode *root = nodes[mid]; 
+    root->left  = buildTreeUtil(nodes, start, mid-1);  
+    root->right = buildTreeUtil(nodes, mid+1, end); 
+    cout << root -> data << endl;
+    return root; 
+}  
+treeNode* buildTree(treeNode* root) 
+{  
+    vector<treeNode *> nodes; 
+    storeBSTNodes(root, nodes); 
+   
+    int n = nodes.size(); 
+    return buildTreeUtil(nodes, 0, n-1); 
+} 
+};
+
+int main()
+{
+binaryTree b;
+b.insertNode(10);
+b.insertNode(11);
+b.insertNode(12);
+b.intraversal(b.root);
+cout << endl;
+treeNode *t = b.buildTree(b.root);
+b.traversal(t);
+
+  return 0;
+}
