@@ -1,0 +1,27 @@
+//Program to find SubArray with Maximum Sum
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    printf("Enter Array Size");
+    int n;
+    cin>>n;
+    printf("Enter Array Elements");
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int curr=0,temp=0,i=0;
+    while(i<n){
+        temp+=arr[i];
+        if(arr[i]>temp){
+            temp=arr[i];
+        }
+        if(temp>curr){
+            curr = temp;
+        }
+        i++;
+    }
+    cout<<curr;
+}
