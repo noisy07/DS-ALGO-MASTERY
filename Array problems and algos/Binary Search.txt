@@ -1,0 +1,36 @@
+#include <iostream>
+#include <bits/stdc++.h> 
+using namespace std;
+int main()
+{
+    printf("Enter Array Size");
+    int n;
+    cin>>n;
+    printf("Enter Array Elements");
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    sort(arr,arr+n);
+    printf("Enter Search Value");
+    int s;
+    cin>>s;
+    int left=0,right=n;
+    bool flag = true;
+    while(left<=right){
+        int mid = (left+right)/2;
+        if(arr[mid]==s)
+        { 
+            cout<<"Value Found";
+            flag = false;
+            break;
+        }
+        if(arr[mid]>s){
+            right = mid-1;
+        }
+        else{
+            left = mid+1;
+        }
+    }
+    if(flag){cout<<"Value Not Found";}
+}
