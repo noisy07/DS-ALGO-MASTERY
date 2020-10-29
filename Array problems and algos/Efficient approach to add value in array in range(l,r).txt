@@ -1,0 +1,31 @@
+#include <iostream>
+#define loop(i,n) for(i=0;i<n;i++)
+using namespace std;
+int main() {
+    int n;
+    cout << "Enter size of array\t";
+    cin>>n;
+    int arr[n+1];
+    int i,q,l,r,k;
+    loop(i,n+1){
+        arr[i]=0;
+    }
+    cout<<"Enter total number of queries \t";
+    cin>>q;
+    cout<<"Enter "<<q<<" queries int the form \"left-range right-range value\""<<endl;
+    loop(i,q){
+        cin>>l>>r>>k;
+        arr[l]+=k;
+        arr[r]-=k;
+    }
+    cout<<"Processing your queries"<<endl;
+    loop(i,n){
+        if(i==0){
+            cout<<arr[i]<<" ";
+            continue;
+        }
+        arr[i]+= arr[i-1];
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
