@@ -1,0 +1,17 @@
+#include <iostream>
+#define loop(n) for(int i=0;i<n;i++)
+using namespace std;
+
+int main() {
+    int n,s;
+    printf("Enter size of an array");
+    cin>>n;
+    int arr[n];
+    printf("Enter Array Elements");
+    loop(n){
+        cin>>arr[i];
+    }
+    cout<<"Enter Search Key";
+    cin>>s;
+    loop(n) if(arr[i]==s){printf("value found");break;}
+}
